@@ -1,0 +1,37 @@
+-- Consultar informações dos livros e seus emprestadores
+SELECT * FROM LivroEmprestadores;
+
+-- Consultar informações das mensalidades dos alunos
+SELECT * FROM MensalidadesAlunos;
+-------------------------------------------------------
+1. Criando Roles para Usuários Autorizados
+-- Criar role para acesso às views
+CREATE ROLE role_view_access;
+
+-- Criar role para acesso às stored procedures
+CREATE ROLE role_proc_access;
+------------------------------------------------------
+2.Concedendo Permissões às Roles
+-- Conceder permissão de seleção (SELECT) nas views para a role role_view_access
+GRANT SELECT ON LivroEmprestadores TO role_view_access;
+GRANT SELECT ON MensalidadesAlunos TO role_view_access;
+
+-- Conceder permissão de execução (EXECUTE) nas stored procedures para a role role_proc_access
+GRANT EXECUTE ON PROCEDURE InserirLivro(VARCHAR, INTEGER, INTEGER) TO role_proc_access;
+GRANT EXECUTE ON PROCEDURE AtualizarValorMensalidade(INTEGER, FLOAT) TO role_proc_access;
+---------------------------------------------------------
+ 3. Atribuindo Roles a Usuários
+ -- Atribuir role_view_access ao usuário user_view
+GRANT role_view_access TO user_view;
+
+-- Atribuir role_proc_access ao usuário user_proc
+GRANT role_proc_access TO user_proc;
+----------------------------------------------------------
+4. Exemplo de Criação de Usuários e Atribuição de Roles
+-- Criar usuários
+CREATE USER user_view WITH PASSWORD 'password_view';
+CREATE USER user_proc WITH PASSWORD 'password_proc';
+
+-- Atribuir roles aos usuários
+GRANT role_view_access TO user_view;
+GRANT role_proc_access TO user_proc;
