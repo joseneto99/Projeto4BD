@@ -1,0 +1,109 @@
+CREATE TABLE Aluno (
+    ra VARCHAR PRIMARY KEY,
+    tipo_plano CHAR,
+    nome VARCHAR(100),
+    numero VARCHAR(100),
+    email VARCHAR(100),
+    idade INTEGER,
+    sexo CHAR,
+    cpf VARCHAR
+);
+
+CREATE TABLE Professor (
+    id_usuario SERIAL PRIMARY KEY,
+    salario FLOAT,
+    cargo VARCHAR(50),
+    nome VARCHAR(100),
+    numero VARCHAR(100),
+    email VARCHAR(100),
+    idade INTEGER,
+    sexo CHAR,
+    cpf VARCHAR
+);
+
+CREATE TABLE Livro (
+    isbn SERIAL PRIMARY KEY,
+    nome VARCHAR,
+    fk_Professor_id_usuario SERIAL REFERENCES Professor(id_usuario),
+    fk_Aluno_ra VARCHAR REFERENCES Aluno(ra)
+);
+
+CREATE TABLE Mensalidade (
+    data_vencimento VARCHAR,
+    valor FLOAT,
+    data_pagamento SERIAL PRIMARY KEY,
+    fk_Aluno_ra VARCHAR REFERENCES Aluno(ra)
+);
+
+CREATE TABLE Questao (
+    id_questao SERIAL PRIMARY KEY,
+    nivel VARCHAR,
+    texto VARCHAR,
+    gabarito VARCHAR,
+    comentarios VARCHAR,
+    alternativas VARCHAR
+);
+
+INSERT INTO Aluno (ra, tipo_plano, nome, numero, email, idade, sexo, cpf)
+VALUES ('123456', 'A', 'João', '99999999', 'joao@example.com', 25, 'M', '123.456.789-01'),
+       ('789012', 'B', 'Maria', '88888888', 'maria@example.com', 30, 'F', '987.654.321-09');
+
+INSERT INTO Professor (id_usuario, salario, cargo, nome, numero, email, idade, sexo, cpf)
+VALUES (1, 5000.00, 'Professor', 'Carlos', '77777777', 'carlos@example.com', 35, 'M', '456.789.012-34'),
+       (2, 6000.00, 'Coordenador', 'Ana', '66666666', 'ana@example.com', 40, 'F', '654.321.098-76');
+
+INSERT INTO Livro (isbn, nome, fk_Professor_id_usuario, fk_Aluno_ra)
+VALUES (1, 'Livro 1', 1, '123456'),
+       (2, 'Livro 2', 2, '789012');
+       
+INSERT INTO Mensalidade (data_vencimento, valor, data_pagamento, fk_Aluno_ra)
+VALUES ('2024-04-30', 50.00, 1, '123456'),
+       ('2024-05-30', 50.00, 2, '789012');
+
+CREATE TABLE Questao (
+    id_questao SERIAL PRIMARY KEY,
+    nivel VARCHAR,
+    texto VARCHAR,
+    gabarito VARCHAR,
+    comentarios VARCHAR,
+    alternativas VARCHAR
+);
+
+INSERT INTO Questao (nivel, texto, gabarito, comentarios, alternativas)
+VALUES ('Fácil', 'Qual é a capital do Brasil?', 'Brasília', 'Comentário sobre a questão', '{"a": "Rio de Janeiro", "b": "São Paulo", "c": "Brasília", "d": "Belo Horizonte"}'),
+       ('Médio', 'Quem pintou Mona Lisa?', 'Leonardo da Vinci', 'Comentário sobre a questão', '{"a": "Pablo Picasso", "b": "Vincent van Gogh", "c": "Leonardo da Vinci", "d": "Michelangelo"}');
+
+UPDATE Livro
+SET nome = 'Novo Nome'
+WHERE isbn = 1;
+
+UPDATE Mensalidade
+SET valor = 60.00
+WHERE data_pagamento = 1;
+
+UPDATE Aluno
+SET idade = 26
+WHERE ra = '123456';
+
+UPDATE Professor
+SET salario = 5500.00
+WHERE id_usuario = 1;
+
+UPDATE Questao
+SET nivel = 'Difícil'
+WHERE id_questao = 1;
+
+DELETE FROM Livro
+WHERE isbn = 2;
+
+DELETE FROM Mensalidade
+WHERE data_pagamento = 2;
+
+DELETE FROM Aluno
+WHERE ra = '789012';
+
+DELETE FROM Professor
+WHERE id_usuario = 2;
+
+DELETE FROM Questao
+WHERE id_questao = 2;
