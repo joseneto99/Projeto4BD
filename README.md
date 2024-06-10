@@ -7,28 +7,27 @@ Grupo:
 - Fernando 
 <br/><br/>
 
-### >
 
-# View
+### > View
 
 para Listar Informações de Mensalidades dos Alunos
  
 para Listar Informações dos Livros e Seus Emprestadores
 
 
-# Stored procedures
+### > Stored procedures
 
 para Inserir um Novo Livro
 
 para Atualizar o Valor de uma Mensalidade
 
-# Segurança
+### > Segurança
 
 Conceder permissão de seleção
 
 permissão de execução
 
-# triggers
+### > triggers
 
 para aumentar o valor da mensalidade em 50% após um mês da data de vencimento
 
@@ -36,7 +35,7 @@ para aumentar automaticamente o ISBN (código do livro) ao adicionar um novo liv
 
 para excluir automaticamente um professor da tabela de professores se seu cargo for alterado para algo além de "Professor"
 
-# Normalização 
+### > Normalização 
 
 Encontra-se na terceira forma normal
 
