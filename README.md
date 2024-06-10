@@ -27,7 +27,9 @@ para aumentar automaticamente o ISBN (código do livro) ao adicionar um novo liv
 
 para excluir automaticamente um professor da tabela de professores se seu cargo for alterado para algo além de "Professor"
 
+# Normalização 
 
+Encontra-se na terceira forma normal
 
 
 
