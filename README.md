@@ -19,6 +19,15 @@ Conceder permissão de seleção
 
 permissão de execução
 
+# triggers
+
+para aumentar o valor da mensalidade em 50% após um mês da data de vencimento
+
+para aumentar automaticamente o ISBN (código do livro) ao adicionar um novo livro
+
+para excluir automaticamente um professor da tabela de professores se seu cargo for alterado para algo além de "Professor"
+
+
 
 
 
