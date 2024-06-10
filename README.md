@@ -1,4 +1,13 @@
+# Projeto Banco de dados 
 
+Grupo: 
+- Pedro Marinho
+- Vinicius 
+- Mario Jorge
+- Fernando 
+<br/><br/>
+
+### >
 
 # View
 
